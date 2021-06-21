@@ -5,7 +5,7 @@ import joblib
 # instancier un objet Flask
 app = Flask(__name__)
 # désserialisation du modèle
-model = joblib.load("model_ensemble.pkl")
+model = joblib.load("model__bagging.pkl")
 
 
 @app.route('/')
@@ -16,7 +16,7 @@ def index():
 @app.route('/predict', methods=['POST'])
 def predict():
     # charger le modèle
-    model = joblib.load("model_ensemble.pkl")
+    model = joblib.load("model__bagging.pkl")
     json_ = request.get_json(force=True)
     # recuperer la chaine de caractères qui forme les permissions
     permissions_str = json_['permissions']
